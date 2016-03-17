@@ -14,11 +14,11 @@
                     plotShadow: false
                 },
                 title: {
-                    text: 'Top Talkers'
+                    text: 'Top 10 Talkers'
                 },
                 tooltip: {
                     formatter: function() {
-                        return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2, '.') +' %';
                     }
                 },
                 plotOptions: {
@@ -30,7 +30,7 @@
                             color: '#000000',
                             connectorColor: '#000000',
                             formatter: function() {
-                                return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                                return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2, '.') +' %';
                             }
                         }
                     }
@@ -42,7 +42,7 @@
                 }]
             }
            
-            $.getJSON("top-talkers-data.php", function(json) {
+            $.getJSON("data/top-talkers.php", function(json) {
                 options.series[0].data = json;
                 chart = new Highcharts.Chart(options);
             });

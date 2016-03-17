@@ -8,7 +8,7 @@ if (!$con) {
 
 mysql_select_db("pmacct", $con);
 
-$result = mysql_query("SELECT ip_src,SUM(bytes) FROM acct_v9 GROUP BY ip_src");
+$result = mysql_query("SELECT ip_src,SUM(bytes) FROM acct_v9 GROUP BY ip_src ORDER BY SUM(bytes) DESC LIMIT 10");
 
 $rows = array();
 while ($r = mysql_fetch_array($result)) {
